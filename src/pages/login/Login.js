@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // TODO: use --> import {Redirect} from 'react-router-dom';
-import {Container, Form, Button, Row, Col, Image} from 'react-bootstrap';
+import { Container, InputGroup, FormControl, Form, Button, Col, Row } from 'react-bootstrap';
+
+import logo from '../../images/tumo-logo.png'
+
+import './login.css'
 
 /**
  * Component for Login Page
  */
 export default class Login extends Component {
+
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: "",
       password: ""
@@ -22,7 +27,7 @@ export default class Login extends Component {
   }
 
   handleEmailChange = event => {
-    this.setState({ 
+    this.setState({
       email: event.target.value
     })
   }
@@ -32,7 +37,6 @@ export default class Login extends Component {
       password: event.target.value
     })
   }
-
 
   render() {
     // TODO: use to redirect if user not logged in
@@ -45,32 +49,17 @@ export default class Login extends Component {
     // }
 
     return (
-      <Container className="mt-5">
-        <Row>
-          <Col className="mx-auto" xs={10} sm={10} md={7} >
-            <Image width="100%" src="https://newsroom.aua.am/files/2017/08/american-times_tumo-center-logo-2.png" alt="Tumo Logo"/>
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group controlId="formEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" value={this.state.email} onChange={this.handleEmailChange} required/>
-              </Form.Group>
-
-              <Form.Group controlId="formPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} required/>
-              </Form.Group>
-
-              <Form.Group controlId="formChecbox">
-                <Form.Check type="checkbox" label="Remember password" />
-              </Form.Group>
-
-              <Button className="mx-auto" variant="primary" type="submit">
-                Submit
-              </Button> 
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+      <div className="login-form-wrapper"  >
+        <Col xl={6} className="input-form-wrapper mx-auto align-middle" >
+          <img className="logo-img" src={logo} />
+          <Form onSubmit={this.handleSubmit} >
+            <Form.Control onChange={this.handleEmailChange} ref="email" className="mt-5" type="email" placeholder="Օգտանուն" />
+            <Form.Control onChange={this.handlePasswordChange} ref="password" className="mt-3" type="password" placeholder="Գաղտնաբառ" />
+            <a className="change-password" href="#" > Փոխել գաղտնաբառը </a>
+            <Button type="submit" onClick={() => this.showInputValues} className="w-100" variant="success">Մուտք</Button>
+          </Form>
+        </Col>
+      </div>
     )
   }
 }
