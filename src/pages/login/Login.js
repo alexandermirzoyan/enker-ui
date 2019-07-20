@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// TODO: use --> import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import { Container, InputGroup, FormControl, Form, Button, Col, Row } from 'react-bootstrap';
 
 import logo from '../../images/tumo-logo.png'
@@ -24,6 +24,7 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     alert(`Logged in as ${this.state.email}`);
+    this.props.loginUser(this.state.email, this.state.password)
   }
 
   handleEmailChange = event => {
@@ -39,14 +40,14 @@ export default class Login extends Component {
   }
 
   render() {
-    // TODO: use to redirect if user not logged in
-    // if (this.props.user) {
-    //   return (
-    //     <Redirect to={{
-    //       pathname: '/profile',
-    //     }} />
-    //   )
-    // }
+    
+    if (this.props.user) {
+      return (
+        <Redirect to={{
+          pathname: '/profile',
+        }} />
+      )
+    }
 
     return (
       <div className="login-form-wrapper"  >

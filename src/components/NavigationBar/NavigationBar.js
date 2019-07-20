@@ -41,6 +41,9 @@ export default ({user, location}) => (
         </Nav>
       </Navbar.Collapse>
       {
+        user.data ? (
+          <div> Hello {user.data.firstName} </div>
+        ) : null
         /**
          * TODO: When user logged in
          * 1. Text Hello [user first name]!

@@ -16,6 +16,7 @@ class Profile extends Component {
   handleChange(type, value) {
     // TODO: EXTRA WORK - handle form change to set state (if doing updates)
   }
+
   render() {
     // TODO: use to redirect to home page if user not logged in
     // if (this.props.user == null) {
@@ -32,8 +33,8 @@ class Profile extends Component {
             <h1 className="my-3 text-center">Profile</h1>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="formEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" required/>
+                <Form.Label>Email</Form.Label>
+                <Form.Control value={this.props.user} type="email" placeholder="Enter email" required/>
               </Form.Group>
 
               <Form.Group controlId="formFName">
