@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {Nav, Navbar} from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import tumoLogoArm from './tumo-logo-arm.png';
 import ProfileIcon from './ProfileIcon';
 import NetworkIcon from './NetworkIcon';
@@ -9,7 +9,7 @@ import SearchIcon from './SearchIcon';
 
 import './navigationbar.css';
 
-export default ({user, location}) => (
+export default ({ user, location, logoutUser }) => (
   <div className="global-nav">
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <LinkContainer to="/">
@@ -19,30 +19,33 @@ export default ({user, location}) => (
         <Nav className="mr-auto">
           {
             // user.data ? (
-              <span>
-                <span className="ml-4 nav-icon">
-                  <LinkContainer to="/profile">
-                    <span><ProfileIcon fillColor={location.pathname === '/profile' ? "#ffa400": "#ffffff"} /></span>
-                  </LinkContainer>
-                </span>
-                <span className="ml-4 nav-icon">
-                  <LinkContainer to="/search">
-                    <span><SearchIcon fillColor={location.pathname === '/search' ? "#ffa400": "#ffffff"} /></span>
-                  </LinkContainer>
-                </span>
-                <span className="ml-4 nav-icon">
-                  <LinkContainer to="/network">
-                    <span><NetworkIcon fillColor={location.pathname === '/network' ? "#ffa400": "#ffffff"} /></span>
-                  </LinkContainer>
-                </span>
+            <span>
+              <span className="ml-4 nav-icon">
+                <LinkContainer to="/profile">
+                  <span><ProfileIcon fillColor={location.pathname === '/profile' ? "#ffa400" : "#ffffff"} /></span>
+                </LinkContainer>
               </span>
+              <span className="ml-4 nav-icon">
+                <LinkContainer to="/search">
+                  <span><SearchIcon fillColor={location.pathname === '/search' ? "#ffa400" : "#ffffff"} /></span>
+                </LinkContainer>
+              </span>
+              <span className="ml-4 nav-icon">
+                <LinkContainer to="/network">
+                  <span><NetworkIcon fillColor={location.pathname === '/network' ? "#ffa400" : "#ffffff"} /></span>
+                </LinkContainer>
+              </span>
+            </span>
             // ) : null
           }
         </Nav>
       </Navbar.Collapse>
       {
         user.data ? (
-          <div> Hello {user.data.firstName} </div>
+          <div>
+            <div> Hello {user.data.firstName} </div>
+            <a href="/login" onClick={() => logoutUser(user)} >Log out</a>
+          </div>
         ) : null
         /**
          * TODO: When user logged in
@@ -51,6 +54,7 @@ export default ({user, location}) => (
          * 3. If connected to peer a button to chat
          */
       }
+
     </Navbar>
   </div>
 );

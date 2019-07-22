@@ -20,7 +20,7 @@ const user = (state = { data: null, error: null }, action) => {
     case "UPDATE_ERROR":
       return { data: null, error: action.payload };
     case "LOGOUT":
-      return { data: null, error: null };
+      return { data: action.payload, error: null };
 
 
     case 'CREATE_USER':
