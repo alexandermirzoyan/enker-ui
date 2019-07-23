@@ -16,3 +16,23 @@
 .global-nav {
   height: 57px;
 }
+
+.user-navbar-information{
+  display: flex;
+  align-items: center;
+  color: white
+}
+
+.user-navbar-information div {
+  margin-right: 30px;
+}
+
+.logout-link{
+  background-color: #fd7e14;
+  border-radius: 20px;
+  padding: 10px 30px; 
+}
+
+.logout-link:hover {
+  color: white;
+}

@@ -57,7 +57,7 @@ export default class Login extends Component {
             <Form.Control onChange={this.handleEmailChange} ref="email" className="mt-5" type="email" placeholder="Օգտանուն" />
             <Form.Control onChange={this.handlePasswordChange} ref="password" className="mt-3" type="password" placeholder="Գաղտնաբառ" />
             <a className="change-password" href="#" > Փոխել գաղտնաբառը </a>
-            <Button type="submit" onClick={() => this.showInputValues} className="w-100 login-submit-button" variant="success">Մուտք</Button>
+            <Button type="submit" className="w-100 login-submit-button" variant="success">Մուտք</Button>
           </Form>
         </Col>
       </div>

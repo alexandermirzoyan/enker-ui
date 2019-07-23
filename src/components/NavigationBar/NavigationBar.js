@@ -42,9 +42,11 @@ export default ({ user, location, logoutUser }) => (
       </Navbar.Collapse>
       {
         user.data ? (
-          <div>
-            <div> Hello {user.data.firstName} </div>
-            <a href="/login" onClick={() => logoutUser(user)} >Log out</a>
+          <div className="user-navbar-information" >
+            <div> 
+              {`Hello ${user.data.firstName}`} 
+            </div>
+            <a className="logout-link" href="/login" onClick={() => logoutUser(user)} >Log out</a>
           </div>
         ) : null
         /**
