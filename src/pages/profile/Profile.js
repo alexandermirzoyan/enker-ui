@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 
+import profilePicture from './profile.jpg';
+import location from './location.svg';
+import learningTargets from './learning-targets.png';
+import emailIcon from './email.png';
+
 import './profile.css'
 
 class Profile extends Component {
@@ -48,71 +53,18 @@ class Profile extends Component {
     }
     return (
       <React.Fragment>
-        <div className="user-profile-information-wrapper" >
-          <div className="first-row" >
-            <div className="profile-first-name-wrapper">
-              {this.state.firstName}
-            </div>
-            <div className="profile-last-name-wrapper">
-              {this.state.lastName}
-            </div>
+        <div className="profile-info-wrapper" >
+          <div className="profile-picture-wrapper" >
+            <img width="400" src={profilePicture} />
           </div>
-          <div className="second-row" >
-            <div className="profile-email-wrapper" >
-              {this.state.email}
-            </div>
-            <div className="profile-last-name-wrapper">
-              {this.state.learningTargets.toString()}
-            </div>
+          <div className="profile-text-info-wrapper" >
+            <h2> {`${this.state.firstName} ${this.state.lastName}`} </h2>
+            <hr />
+            <p> <img width="50" alt="location" src={location} /> Location: <b>{this.state.location}</b> </p>
+            <p> <img width="50" alt="location" src={learningTargets} /> Learning Targets: <b>{this.state.learningTargets.toString()}</b> </p>
+            <p> <img width="50" alt="location" src={emailIcon} /> Email: <b>{this.state.email}</b> </p>
           </div>
         </div>
-        <Container className="mt-5">
-          <h1 className="text-dark text-center">Profile</h1>
-          <Form className="mt-4" onSubmit={e => this.handleSubmit(e)}>
-            {
-              this.props.userError ? <Alert variant="danger">{this.props.userError}</Alert> : null
-            }
-            {/* <Form.Group controlId="formEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control value={this.state.email} onChange={(e) => { this.handleChange("email", e.target.value) }} type="email" placeholder="Enter email" />
-          </Form.Group>
-          <Form.Group controlId="formFirstName">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control value={this.state.firstName} onChange={(e) => { this.handleChange("firstName", e.target.value) }} type="text" placeholder="Enter first name" />
-          </Form.Group>
-          <Form.Group controlId="formLastName">
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control value={this.state.lastName} onChange={(e) => { this.handleChange("lastName", e.target.value) }} type="text" placeholder="Enter last name" />
-          </Form.Group>
-          <Form.Group controlId="formPassword">
-            <Form.Label>Passowrd</Form.Label>
-            <Form.Control value={this.state.password} onChange={(e) => { this.handleChange("password", e.target.value) }} type="password" placeholder="Enter password" />
-          </Form.Group>
-          <Form.Group controlId="formLearningTarget">
-            <Form.Label>Learning Targets</Form.Label>
-            <Form.Control value={this.state.learningTargets} onChange={(e) => { this.handleChange("learningTargets", e.target.options) }} as="select" multiple>
-              {
-                this.learningTargets.map(target => 
-                  <option value={target} key={target}>{target}</option>
-                )
-              }
-            </Form.Control>
-          </Form.Group> */}
-            <Form.Group controlId="formLocation">
-              <Form.Label>Location</Form.Label>
-              <Form.Control value={this.state.location} onChange={(e) => { this.handleChange("location", e.target.value) }} as="select">
-                {
-                  this.locations.map(location =>
-                    <option key={location}>{location}</option>
-                  )
-                }
-              </Form.Control>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Update
-          </Button>
-          </Form>
-        </Container>
       </React.Fragment>
     )
   }

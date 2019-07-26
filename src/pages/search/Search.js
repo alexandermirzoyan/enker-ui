@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Socket from '../../socket';
 import {Badge, ListGroup, Tab, Form, Button, Container, Col, Row} from 'react-bootstrap';
 
+import './search.css';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -62,7 +64,8 @@ class Search extends React.Component {
           <Row className="justify-content-md-center mt-4 mb-4">
             <Col xs lg={6}>
               <Form.Group>
-                <Form.Control ref={"searchTextRef"} as="input" type="text"></Form.Control>
+                {/* <Form.Control ref={"searchTextRef"} as="input" type="text"></Form.Control> */}
+                <input ref={"searchTextRef"} className="search-inputbox" placeholder="Search ..." type="text" />
               </Form.Group>
             </Col>
             <Col md="auto">

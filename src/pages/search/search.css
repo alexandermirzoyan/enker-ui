@@ -1,0 +1,10 @@
+.search-inputbox {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    border: none;
+    font-size: 30px;
+    color: grey;
+}
+
+.search-inputbox:focus{
+    outline: none;
+}
