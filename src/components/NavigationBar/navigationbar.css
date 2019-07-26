@@ -16,3 +16,15 @@
 .global-nav {
   height: 57px;
 }
+
+.log-out-button {
+  background-color: #EE9018;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+}
+
+.log-out-button:hover{
+  text-decoration: underline;
+}

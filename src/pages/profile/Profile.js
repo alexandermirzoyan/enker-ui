@@ -1,18 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+
+import './profile.css'
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.learningTargets = ["Animation", "Game Development", "Filmmaking", "Web Development"]
-    this.locations = ["Yerevan",  "Gyumri", "Stepnakert", "Dilijan"]
+    this.locations = ["Yerevan", "Gyumri", "Stepnakert", "Dilijan"]
     this.state = {
       email: props.user ? props.user.email : '',
-      firstName: props.user ? props.user.firstName: '',
-      lastName: props.user ? props.user.lastName: '',
-      password: props.user ? props.user.password: '',
+      firstName: props.user ? props.user.firstName : '',
+      lastName: props.user ? props.user.lastName : '',
+      password: props.user ? props.user.password : '',
       learningTargets: props.user ? props.user.learningTargets : [],
       location: props.user ? props.user.location : this.locations[0]
     };
@@ -34,7 +36,7 @@ class Profile extends Component {
       this.setState({
         [type]: value
       });
-    } 
+    }
   }
   render() {
     if (this.props.user == null) {
@@ -45,13 +47,32 @@ class Profile extends Component {
       )
     }
     return (
-      <Container className="mt-5">
-        <h1 className="text-dark text-center">Profile</h1>
-        <Form className="mt-4" onSubmit={e => this.handleSubmit(e)}>
-          {
-            this.props.userError ?  <Alert variant="danger">{this.props.userError}</Alert>  : null
-          }
-          <Form.Group controlId="formEmail">
+      <React.Fragment>
+        <div className="user-profile-information-wrapper" >
+          <div className="first-row" >
+            <div className="profile-first-name-wrapper">
+              {this.state.firstName}
+            </div>
+            <div className="profile-last-name-wrapper">
+              {this.state.lastName}
+            </div>
+          </div>
+          <div className="second-row" >
+            <div className="profile-email-wrapper" >
+              {this.state.email}
+            </div>
+            <div className="profile-last-name-wrapper">
+              {this.state.learningTargets.toString()}
+            </div>
+          </div>
+        </div>
+        <Container className="mt-5">
+          <h1 className="text-dark text-center">Profile</h1>
+          <Form className="mt-4" onSubmit={e => this.handleSubmit(e)}>
+            {
+              this.props.userError ? <Alert variant="danger">{this.props.userError}</Alert> : null
+            }
+            {/* <Form.Group controlId="formEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control value={this.state.email} onChange={(e) => { this.handleChange("email", e.target.value) }} type="email" placeholder="Enter email" />
           </Form.Group>
@@ -76,22 +97,23 @@ class Profile extends Component {
                 )
               }
             </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="formLocation">
-            <Form.Label>Location</Form.Label>
-            <Form.Control value={this.state.location} onChange={(e) => { this.handleChange("location", e.target.value) }} as="select">
-              {
-                this.locations.map(location => 
-                  <option key={location}>{location}</option>
-                )
-              }
-            </Form.Control>
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Update
+          </Form.Group> */}
+            <Form.Group controlId="formLocation">
+              <Form.Label>Location</Form.Label>
+              <Form.Control value={this.state.location} onChange={(e) => { this.handleChange("location", e.target.value) }} as="select">
+                {
+                  this.locations.map(location =>
+                    <option key={location}>{location}</option>
+                  )
+                }
+              </Form.Control>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Update
           </Button>
-        </Form>
-      </Container>      
+          </Form>
+        </Container>
+      </React.Fragment>
     )
   }
 }

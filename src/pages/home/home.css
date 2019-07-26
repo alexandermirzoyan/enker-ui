@@ -1,5 +1,6 @@
 .full-background {
-  background-image: url('./tumo-building.jpg');
+  /*background-image: url('./tumo-building.jpg');*/
+  background-image: url('./friends.jpg');
   height: 100%;
   position: relative;
   background-position: center;
@@ -19,4 +20,8 @@
 
 .tumo-logo-caption {
   width: 800px;
+}
+
+.text-info {
+  color: #7AC112 !important; 
 }

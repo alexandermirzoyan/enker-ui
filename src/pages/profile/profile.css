@@ -1,0 +1,37 @@
+.user-profile-information-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-profile-information-wrapper div {
+    /* padding: 100px 30px;
+    margin: 20px; */
+    font-size: 30px;
+    color: white;
+    text-align: center
+}
+
+.first-row{
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.first-row div {
+    background-color: lightblue;
+    padding: 50px;
+    margin-bottom: 20px;
+}
+
+.second-row{
+    display: flex;
+    flex-direction: column
+}
+
+.second-row div {
+    background-color: lightblue;
+    padding: 50px;
+    margin-bottom: 20px; 
+}
